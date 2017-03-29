@@ -29,13 +29,31 @@ export default({ config,db }) => {
         newMinistry.name = req.body.name;
         newMinistry.info = req.body.info;
         newMinistry.created_at = + new Date();
-        newMinistry.leaders.push(req.body.leader) ;
+        newMinistry.leaders.push(req.body.leader);
 
         newMinistry.save(err => {
             if (err){
                 res.send(err);
             }
             res.json({message:"Your ministry was created successfully"});
+        })
+    })
+
+    // PUT
+    api.put("/:id",(req,res)=>{
+        Ministry.findById(req.params.id,(err,ministry) => {
+            if (err){
+                res.send(err);
+            }
+            ministry.name = req.body.name;
+            ministry.info = req.body.info;
+            ministry.leaders = [req.body.leader] ;
+            ministry.save(err => {
+                if(err){
+                    res.send(err);
+                }
+                res.json({message:"Your ministry was updated successfully"});
+            })
         })
     })
 
