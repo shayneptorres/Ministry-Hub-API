@@ -7,6 +7,17 @@ export default({ config,db }) => {
 
     // Routes here
 
+    // GET
+
+    api.get("/",(req,res) => {
+        Ministry.find({},(err,ministries) =>{
+            if (err){
+                res.send(err);
+            }
+            res.json(ministries)
+        })
+    })
+
     // POST
 
     // Add a new ministry
