@@ -1,0 +1,25 @@
+{
+  "name": "ministry-hub-api",
+  "version": "1.0.0",
+  "description": "API for the Ministry Hub iOS/OSx/Web application",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Shayne Torres",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.17.1",
+    "express": "^4.15.2",
+    "mongoose": "^4.9.2"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.24.0",
+    "babel-core": "^6.24.0",
+    "babel-eslint": "^7.2.1",
+    "babel-preset-es2015": "^6.24.0",
+    "babel-preset-stage-0": "^6.22.0",
+    "eslint": "^3.18.0",
+    "nodemon": "^1.11.0"
+  }
+}
