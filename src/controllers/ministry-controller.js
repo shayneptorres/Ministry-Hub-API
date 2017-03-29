@@ -64,14 +64,12 @@ export default({ config,db }) => {
 
     // Add a new ministry
     // "/v1/ministry"
-
     api.post("/",(req,res) => {
         let newMinistry = new Ministry();
 
         newMinistry.name = req.body.name;
         newMinistry.info = req.body.info;
         newMinistry.created_at = + new Date();
-        newMinistry.leaders.push(req.body.leader);
 
         newMinistry.save(err => {
             if (err){
@@ -82,6 +80,7 @@ export default({ config,db }) => {
     })
 
     // PUT
+    // Update a ministry with the given id
     api.put("/:id",(req,res)=>{
         Ministry.findById(req.params.id,(err,ministry) => {
             if (err){
@@ -89,7 +88,6 @@ export default({ config,db }) => {
             }
             ministry.name = req.body.name;
             ministry.info = req.body.info;
-            ministry.leaders = [req.body.leader] ;
             ministry.save(err => {
                 if(err){
                     res.send(err);

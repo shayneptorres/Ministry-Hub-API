@@ -14,7 +14,8 @@ let ministrySchema = new Schema({
     created_at:{
         type:Date
     },
-    staff:[{type:Schema.Types.ObjectId, ref: "Staff"}]
+    staff:[{type:Schema.Types.ObjectId, ref: "Staff"}],
+    events:[{type: Schema.Types.ObjectId, ref: "Event"}]
 })
 
 module.exports = mongoose.model("Ministry",ministrySchema);
