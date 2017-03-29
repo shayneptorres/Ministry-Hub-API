@@ -10,3 +10,5 @@ initializeDB(db=>{
 
     // API routes
 })
+
+export default router;

@@ -1,0 +1,1 @@
+{"version":3,"sources":["../../src/config/index.js"],"names":[],"mappings":";;;;;kBAAe;AACX,YAAO,IADI;AAEX,gBAAW,wCAFA;AAGX,iBAAY;AAHD,C","file":"index.js","sourcesContent":["export default {\n    \"port\":3005,\n    \"mongoURL\":\"mongodb://localhost:27017/ministry-hub\",\n    \"bodyLimit\":\"100kb\"\n}"]}
