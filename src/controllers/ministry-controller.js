@@ -19,11 +19,21 @@ export default({ config,db }) => {
         })
     })
 
+    // Get all staff from the ministry with the given id
+    api.get("/staff",(req,res) => {
+        Staff.find({ministry:req.headers["id"]},(err,staff) =>{
+            if(err){
+                res.send(err);
+            }
+            res.json(staff);
+        })
+    })
+
     // POST
 
     // Adds a staff member to a group with a given ID
     api.post("/staff",(req,res) => {
-        Ministry.findById(req.body.id,(err,ministry) =>{
+        Ministry.findById(req.body.min_id,(err,min) =>{
             if (err){
                 res.send(err);
             }
@@ -33,15 +43,16 @@ export default({ config,db }) => {
             newStaff.phone = req.body.phone;
             newStaff.email = req.body.email;
             newStaff.created_at = + new Date();
+            newStaff.ministry = req.body.min_id;
             // save the staff
             newStaff.save(err =>{
                 if(err){
                     res.send(err)
                 }
                 // add staff to ministry
-                ministry.staff.push(newStaff);
+                min.staff.push(newStaff);
                 // save ministry change
-                ministry.save(err => {
+                min.save(err => {
                     if(err){
                         res.send(err)
                     }

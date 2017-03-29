@@ -18,6 +18,7 @@ export default({config,db}) => {
         newStaff.phone = req.body.phone;
         newStaff.email = req.body.email;
         newStaff.created_at = + new Date();
+        newStaff.ministry = req.body.min_id;
 
         newStaff.save(err => {
             if(err){

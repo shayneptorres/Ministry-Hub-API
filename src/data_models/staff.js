@@ -16,7 +16,8 @@ let staffSchema = new Schema({
     created_at: {
         type: Date,
         required: true
-    }
+    },
+    ministry: {type:Schema.Types.ObjectId,ref:"Ministry"}
 });
 
 module.exports = mongoose.model("Staff",staffSchema);
