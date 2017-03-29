@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 import {Router} from "express";
 import Ministry from "../data_models/ministry";
+import Staff from "../data_models/staff";
 
 export default({ config,db }) => {
     let api = Router();
@@ -19,6 +20,36 @@ export default({ config,db }) => {
     })
 
     // POST
+
+    // Adds a staff member to a group with a given ID
+    api.post("/staff",(req,res) => {
+        Ministry.findById(req.body.id,(err,ministry) =>{
+            if (err){
+                res.send(err);
+            }
+            // create new staff with parameters
+            let newStaff = new Staff();
+            newStaff.name = req.body.name;
+            newStaff.phone = req.body.phone;
+            newStaff.email = req.body.email;
+            newStaff.created_at = + new Date();
+            // save the staff
+            newStaff.save(err =>{
+                if(err){
+                    res.send(err)
+                }
+                // add staff to ministry
+                ministry.staff.push(newStaff);
+                // save ministry change
+                ministry.save(err => {
+                    if(err){
+                        res.send(err)
+                    }
+                    res.json({message:"Your staff was saved successfully to you given ministry"})
+                })
+            })
+        })
+    })
 
     // Add a new ministry
     // "/v1/ministry"

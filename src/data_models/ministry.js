@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import Staff from "./staff";
 
 let Schema = mongoose.Schema;
 
@@ -13,9 +14,7 @@ let ministrySchema = new Schema({
     created_at:{
         type:Date
     },
-    leaders:{
-        type:[String]
-    }
+    staff:[{type:Schema.Types.ObjectId, ref: "Staff"}]
 })
 
 module.exports = mongoose.model("Ministry",ministrySchema);
